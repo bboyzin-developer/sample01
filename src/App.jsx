@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import Todolist from "./03/Todolist";
-import Multinode from "./03/Multinode";
+import Counter from "./03/Counter2";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.increaseCount = this.increaseCount.bind(this);
+  }
+  increaseCount() {
+    this.setState(({ count }) => ({ count: count + 1 }));
+  }
   render() {
-    return (
-      <div>
-        <Todolist />
-        <Multinode />
-      </div>
-    );
+    return <Counter count={this.state.count} onAdd={this.increaseCount} />;
   }
 }
 
